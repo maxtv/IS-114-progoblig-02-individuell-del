@@ -1,0 +1,38 @@
+include image
+
+fun make_nordic_flag(flag_width :: Number, flag_height :: Number, outer_cross_width :: Number, inner_cross_width :: Number, cross_position :: Number, base_color :: String, outer_cross_color :: String, inner_cross_color :: String) -> Image:
+  # definerer dimensjonene til korset
+  cross_height = flag_height
+
+  # lager delene til korset i solid farger
+  outer_vertical_cross = rectangle(outer_cross_width, cross_height, "solid", outer_cross_color)
+  outer_horizontal_cross = rectangle(flag_width, outer_cross_width, "solid", outer_cross_color)
+  inner_vertical_cross = rectangle(inner_cross_width, cross_height, "solid", inner_cross_color)
+  inner_horizontal_cross = rectangle(flag_width, inner_cross_width, "solid", inner_cross_color)
+
+  # skaper basen til flagget
+  flag_base = rectangle(flag_width, flag_height, "solid", base_color)
+
+  # overlayer korset på kors basen
+  flag_with_outer_vertical_cross = place-image(outer_vertical_cross, cross_position, flag_height / 2, flag_base)
+  flag_with_outer_cross = overlay(outer_horizontal_cross, flag_with_outer_vertical_cross)
+  flag_with_inner_vertical_cross = place-image(inner_vertical_cross, cross_position, flag_height / 2, flag_with_outer_cross)
+  flag_with_full_cross = overlay(inner_horizontal_cross, flag_with_inner_vertical_cross)
+
+  # Returnerer flagget
+  flag_with_full_cross
+end
+
+# funksjonen for å lage flagget i 200x 100 dimensjoner
+norwegian_flag = make_nordic_flag(200, 100, 30, 20, 40, "red", "white", "blue")
+swedish_flag = make_nordic_flag(200, 100, 20, 20, 50, "blue", "yellow", "yellow")
+finnish_flag = make_nordic_flag(200, 100, 30, 20, 50,"white", "blue", "blue")
+icelandic_flag = make_nordic_flag(200, 100, 30 ,20 ,40 ,"blue", "white", "red")
+danish_flag = make_nordic_flag(200 ,100 ,30 ,30 ,50 ,"red", "white", "white")
+
+# viser flaggene i all sin skjønnhet
+norwegian_flag
+swedish_flag
+finnish_flag
+icelandic_flag
+danish_flag
