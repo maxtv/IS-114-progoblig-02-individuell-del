@@ -25,7 +25,7 @@ end
 
 # funksjonen for å lage flagget i 200x 100 dimensjoner
 norwegian_flag = make_nordic_flag(200, 100, 30, 20, 40, "red", "white", "blue")
-swedish_flag = make_nordic_flag(200, 100, 20, 20, 50, "blue", "yellow", "yellow")
+swedish_flag = make_nordic_flag(200, 100, 30, 30, 50, "blue", "yellow", "yellow")
 finnish_flag = make_nordic_flag(200, 100, 30, 20, 50,"white", "blue", "blue")
 icelandic_flag = make_nordic_flag(200, 100, 30 ,20 ,40 ,"blue", "white", "red")
 danish_flag = make_nordic_flag(200 ,100 ,30 ,30 ,50 ,"red", "white", "white")
