@@ -37,11 +37,7 @@ energy-per-day = ( distance-travelled-per-day /
                             distance-per-unit-of-fuel ) * 
                                        energy-per-unit-of-fuel
 
-# Oppgave C) totalt energiforbruk
-energiforbruk = sum(energi-er-goy, "energi")
-
-# Oppgave D) Visualisering av data i tabellen ved bruk av et stolpediagram
+# Oppgave E) Visualisering av data i tabellen ved bruk av et stolpediagram
 bar-chart(energi-er-goy, "komponent", "energi")
 
-
-koden til progoblig 2 del 2. flagg oppgaven er i en annen mappe
+koden til progoblig 2 del 2. Flagg oppgaven er i en annen mappe
