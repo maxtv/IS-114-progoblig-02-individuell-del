@@ -3,6 +3,8 @@ include data-source
 include shared-gdrive("dcic-2021", "1wyQZj_L0qqV9Ekgr9au6RX2iqt2Ga8Ep")
 
 ssid = "1RYN0i4Zx_UETVuYacgaGfnFcv4l9zd9toQTTdkQkj7g"
+#laster inn tabellen og dataen fra google drive
+
 # Definerer en funksjon for å konvertere energi til et tall
 fun energi-to-number(str :: String) -> Number:
   cases (Option) string-to-number(str):
@@ -14,7 +16,7 @@ where:
   energi-to-number("48") is 48
 end
 
-# Last inn tabellen med komponent og energidata
+# Laster inn tabellen med komponent og energidata
 kWh-wealthy-consumer-data = 
 load-table: komponent, energi
 source: load-spreadsheet(ssid).sheet-by-name("kWh", true)
@@ -22,4 +24,24 @@ source: load-spreadsheet(ssid).sheet-by-name("kWh", true)
 end
 kWh-wealthy-consumer-data 
 
-koden til oppgave 2 progoblig 2
+# Transformere kolonnen "energi" ved å bruke funksjonen energi-to-number
+energi-er-goy = transform-column(kWh-wealthy-consumer-data, "energi",  energi-to-number)
+
+# For å tilfredsstille testene i where-blokken, overførte jeg data fra type string til type number
+distance-travelled-per-day = 30 
+distance-per-unit-of-fuel = 3
+energy-per-unit-of-fuel = 10
+
+# energi per dag
+energy-per-day = ( distance-travelled-per-day / 
+                            distance-per-unit-of-fuel ) * 
+                                       energy-per-unit-of-fuel
+
+# Oppgave C) totalt energiforbruk
+energiforbruk = sum(energi-er-goy, "energi")
+
+# Oppgave D) Visualisering av data i tabellen ved bruk av et stolpediagram
+bar-chart(energi-er-goy, "komponent", "energi")
+
+
+koden til progoblig 2 del 2. flagg oppgaven er i en annen mappe
